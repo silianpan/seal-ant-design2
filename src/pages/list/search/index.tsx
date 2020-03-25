@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Input } from 'antd';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
-import { connect, router } from 'umi';
+import { connect, history } from 'umi';
 
 interface SearchProps {
   match: {
@@ -20,13 +20,13 @@ class Search extends Component<SearchProps> {
     const url = match.url === '/' ? '' : match.url;
     switch (key) {
       case 'articles':
-        router.push(`${url}/articles`);
+        history.push(`${url}/articles`);
         break;
       case 'applications':
-        router.push(`${url}/applications`);
+        history.push(`${url}/applications`);
         break;
       case 'projects':
-        router.push(`${url}/projects`);
+        history.push(`${url}/projects`);
         break;
       default:
         break;
