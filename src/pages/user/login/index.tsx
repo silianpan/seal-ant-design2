@@ -8,7 +8,7 @@ import styles from './style.less';
 import { LoginParamsType } from './service';
 import LoginFrom from './components/Login';
 
-const { Tab, UserName, Password, Mobile, Captcha, Submit } = LoginFrom;
+const { Tab, UserName, Password, Mobile, Captcha, CaptchaImage, Submit } = LoginFrom;
 interface LoginProps {
   dispatch: Dispatch<AnyAction>;
   userAndlogin: StateType;
@@ -41,6 +41,7 @@ const Login: React.FC<LoginProps> = (props) => {
       payload: {
         ...values,
         type,
+        autoLogin,
       },
     });
   };
@@ -49,12 +50,12 @@ const Login: React.FC<LoginProps> = (props) => {
       <LoginFrom activeKey={type} onTabChange={setType} onSubmit={handleSubmit}>
         <Tab key="account" tab="账户密码登录">
           {status === 'error' && loginType === 'account' && !submitting && (
-            <LoginMessage content="账户或密码错误（admin/ant.design）" />
+            <LoginMessage content="账户或密码错误" />
           )}
 
           <UserName
             name="userName"
-            placeholder="用户名: admin or user"
+            placeholder="用户名"
             rules={[
               {
                 required: true,
@@ -64,11 +65,21 @@ const Login: React.FC<LoginProps> = (props) => {
           />
           <Password
             name="password"
-            placeholder="密码: ant.design"
+            placeholder="密码"
             rules={[
               {
                 required: true,
                 message: '请输入密码！',
+              },
+            ]}
+          />
+          <CaptchaImage
+            name="validateCode"
+            placeholder="请输入验证码"
+            rules={[
+              {
+                required: true,
+                message: '请输入验证码！',
               },
             ]}
           />

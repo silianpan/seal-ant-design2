@@ -15,6 +15,7 @@ export interface LoginItemType {
   Password: React.FC<WrappedLoginItemProps>;
   Mobile: React.FC<WrappedLoginItemProps>;
   Captcha: React.FC<WrappedLoginItemProps>;
+  CaptchaImage: React.FC<WrappedLoginItemProps>;
 }
 
 export interface LoginItemProps extends Partial<FormItemProps> {
@@ -139,6 +140,25 @@ const LoginItem: React.FC<LoginItemProps> = (props) => {
       </FormItem>
     );
   }
+
+  // 图片验证码
+  if (type === 'CaptchaImage') {
+    return (
+      <FormItem shouldUpdate>
+        <Row gutter={8}>
+          <Col span={16}>
+            <FormItem name={name} {...options}>
+              <Input {...customProps} {...restProps} />
+            </FormItem>
+          </Col>
+          <Col span={8}>
+            <img src="/api/captcha/captchaImage?type=math" alt="captchaImage" width="85%" />
+          </Col>
+        </Row>
+      </FormItem>
+    );
+  }
+
   return (
     <FormItem name={name} {...options}>
       <Input {...customProps} {...otherProps} />

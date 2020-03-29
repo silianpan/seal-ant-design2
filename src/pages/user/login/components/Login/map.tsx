@@ -1,4 +1,10 @@
-import { LockTwoTone, MailTwoTone, MobileTwoTone, UserOutlined } from '@ant-design/icons';
+import {
+  LockTwoTone,
+  MailTwoTone,
+  MobileTwoTone,
+  UserOutlined,
+  CalculatorOutlined,
+} from '@ant-design/icons';
 import React from 'react';
 import styles from './index.less';
 
@@ -60,6 +66,26 @@ export default {
     props: {
       size: 'large',
       prefix: <MailTwoTone className={styles.prefixIcon} />,
+      placeholder: 'captcha',
+    },
+    rules: [
+      {
+        required: true,
+        message: 'Please enter Captcha!',
+      },
+    ],
+  },
+  CaptchaImage: {
+    props: {
+      size: 'large',
+      prefix: (
+        <CalculatorOutlined
+          style={{
+            color: '#1890ff',
+          }}
+          className={styles.prefixIcon}
+        />
+      ),
       placeholder: 'captcha',
     },
     rules: [

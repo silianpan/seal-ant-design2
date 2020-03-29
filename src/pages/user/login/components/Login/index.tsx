@@ -28,6 +28,7 @@ interface LoginType extends React.FC<LoginProps> {
   Password: React.FunctionComponent<LoginItemProps>;
   Mobile: React.FunctionComponent<LoginItemProps>;
   Captcha: React.FunctionComponent<LoginItemProps>;
+  CaptchaImage: React.FunctionComponent<LoginItemProps>;
 }
 
 const Login: LoginType = (props) => {
@@ -113,5 +114,6 @@ Login.UserName = LoginItem.UserName;
 Login.Password = LoginItem.Password;
 Login.Mobile = LoginItem.Mobile;
 Login.Captcha = LoginItem.Captcha;
+Login.CaptchaImage = LoginItem.CaptchaImage;
 
 export default Login;

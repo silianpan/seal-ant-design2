@@ -5,12 +5,20 @@ export interface LoginParamsType {
   password: string;
   mobile: string;
   captcha: string;
+  autoLogin: Boolean;
+  validateCode: String;
 }
 
 export async function fakeAccountLogin(params: LoginParamsType) {
-  return request('/api/login/account', {
+  const tmp = {
+    username: params.userName,
+    password: params.password,
+    rememberMe: params.autoLogin,
+    validateCode: params.validateCode,
+  };
+  return request('/api/login', {
     method: 'POST',
-    data: params,
+    params: tmp,
   });
 }
 
